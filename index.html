@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meta Nur Arfiya - CV Interaktif</title>
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --light: #f8f9fa;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        body {
+            background: var(--light);
+            color: #333;
+            line-height: 1.7;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        header {
+            text-align: center;
+            padding: 3rem;
+            background: var(--primary);
+            color: white;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--secondary);
+        }
+
+        .profile-section {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .profile-img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 5px solid white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            object-fit: cover;
+        }
+
+        section {
+            background: white;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            color: var(--primary);
+            border-left: 5px solid var(--secondary);
+            padding-left: 1rem;
+            margin: 2rem 0;
+            font-size: 1.8rem;
+        }
+
+        h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .date {
+            color: #7f8c8d;
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            padding: 2rem;
+            border-radius: 10px;
+            background: var(--light);
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+
+        .project-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-icon {
+            font-size: 2rem;
+            color: var(--secondary);
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin: 1.5rem 0;
+        }
+
+        .tech-tag {
+            background: var(--secondary);
+            color: white;
+            padding: 0.5rem 1.2rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        .responsibilities {
+            margin-left: 1.5rem;
+        }
+
+        .responsibilities li {
+            margin-bottom: 0.8rem;
+        }
+
+        .education-item {
+            margin-bottom: 2rem;
+        }
+
+        .certificate-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .certificate-card {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+            border: 1px solid #e0e0e0;
+            transition: transform 0.3s ease;
+        }
+
+        .certificate-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .certificate-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .certificate-icon {
+            font-size: 1.8rem;
+            color: #3498db;
+            background: #e3f2fd;
+            padding: 0.8rem;
+            border-radius: 50%;
+        }
+
+        .certificate-issuer {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+            margin: 0.2rem 0 0 0;
+        }
+
+        .certificate-date {
+            color: #3498db;
+            font-weight: 500;
+            margin: 0.5rem 0;
+            font-size: 0.9rem;
+        }
+
+        .certificate-description {
+            color: #555;
+            font-size: 0.95rem;
+            margin: 1rem 0;
+            line-height: 1.5;
+        }
+
+        .certificate-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.6rem 1.2rem;
+            background: #3498db;
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: background 0.3s;
+            margin-top: 0.5rem;
+        }
+
+        .certificate-link:hover {
+            background: #2980b9;
+        }
+
+        .coming-soon {
+            background: #95a5a6;
+        }
+
+        .coming-soon:hover {
+            background: #7f8c8d;
+        }
+
+        .social-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 1rem 2rem;
+            background: var(--primary);
+            color: white;
+            border-radius: 30px;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .social-link:hover {
+            background: var(--secondary);
+            transform: scale(1.05);
+        }
+
+        /* Style baru untuk kepanitiaan */
+        .committee-item {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px dashed #eee;
+        }
+
+        .committee-item:last-child {
+            border-bottom: none;
+        }
+
+        .committee-position {
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .committee-event {
+            font-weight: 500;
+        }
+
+        .committee-organization {
+            color: #7f8c8d;
+            font-style: italic;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            .profile-section {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .project-grid, .certificate-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>META NUR ARFIYA</h1>
+            <p>Mahasiswi D4 Teknik Informatika | Politeknik Negeri Jember</p>
+            <p>Nganjuk, Jawa Timur | +62 858 9576 9832 | mettametta815@gmail.com</p>
+        </header>
+
+        <!-- Profil -->
+        <section>
+            <div class="profile-section">
+                <img src="img/mt.jpg" 
+                     alt="Meta Nur Arfiya"
+                     class="profile-img">
+                <div>
+                    <h2>Profil Profesional</h2>
+                    <p>Mahasiswi semester 4 Teknik Informatika di Politeknik Negeri Jember dengan IPK 3.60. Memiliki pengalaman dalam beberapa proyek berbasis pembelajaran (Project Based Learning), khususnya pada:</p>
+                    <ul class="responsibilities">
+                        <li>Pengujian perangkat lunak</li>
+                        <li>Perancangan basis data</li>
+                        <li>Penyusunan dan pengelolaan dokumen</li>
+                        <li>Pengembangan aplikasi desktop dan web</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pendidikan -->
+        <section>
+            <h2>Riwayat Pendidikan</h2>
+            <div class="education-item">
+                <h3><i class="fas fa-graduation-cap"></i> D4 Teknik Informatika</h3>
+                <p>Politeknik Negeri Jember | 2023 - Sekarang</p>
+                <p>IPK 3.60 | Mata Kuliah Utama:</p>
+                <div class="tech-stack">
+                    <span class=>Pemrograman Java</span>
+                    <span class=>Basis Data</span>
+                    <span class=>Sistem Informasi Web</span>
+                    <span class=>Pengujian Perangkat Lunak</span>
+                    <span class=>10+ mata kuliah relevan lainnya</span>
+                </div>
+            </div>
+            
+            <div class="education-item">
+                <h3><i class="fas fa-school"></i> SMA Negeri 1 Gondang</h3>
+                <p>Jurusan MIPA | 2020 - 2023</p>
+            </div>
+        </section>
+
+        <!-- Pengalaman -->
+        <section>
+            <h2>Pengalaman Profesional</h2>
+            
+            <!-- E-Cash -->
+            <div class="project-card">
+                <div class="project-header">
+                    <i class="fas fa-cash-register project-icon"></i>
+                    <div>
+                        <h3>Project Owner & Developer - E-Cash</h3>
+                        <p class="date">Project Based Learning | Feb 2024 – Jun 2024</p>
+                    </div>
+                </div>
+                <ul class="responsibilities">
+                    <li>Memimpin pengembangan aplikasi POS berbasis desktop untuk toko retail</li>
+                    <li>Merancang fitur utama: pencatatan penjualan, manajemen produk, dan laporan transaksi</li>
+                    <li>Mengintegrasikan antarmuka pengguna dengan sistem backend</li>
+                    <li>Mengoptimalkan pengalaman pengguna untuk meminimalkan kesalahan transaksi</li>
+                </ul>
+                <div class="tech-stack">
+                    <span class="tech-tag">Java</span>
+                    <span class="tech-tag">MySQL</span>
+                    <span class="tech-tag">Manajemen Proyek</span>
+                </div>
+            </div>
+            
+            <!-- TEKA.IN -->
+            <div class="project-card">
+                <div class="project-header">
+                    <i class="fas fa-school project-icon"></i>
+                    <div>
+                        <h3>Test Designer - Aplikasi TEKA.IN</h3>
+                        <p class="date">Project Based Learning | Sep 2024 – Des 2024</p>
+                    </div>
+                </div>
+                <ul class="responsibilities">
+                    <li>Merancang test cases dan skenario pengujian untuk sistem informasi</li>
+                    <li>Melaksanakan pengujian otomatis dan manual untuk fungsionalitas sistem</li>
+                    <li>Berkolaborasi dengan tim pengembang untuk memperbaiki masalah</li>
+                    <li>Memastikan aplikasi memenuhi standar kualitas</li>
+                </ul>
+                <div class="tech-stack">
+                    <span class="tech-tag">Testing</span>
+                    <span class="tech-tag">Quality Assurance</span>
+                    <span class="tech-tag">Test Cases</span>
+                </div>
+            </div>
+            
+            <!-- Bookeping -->
+            <div class="project-card">
+                <div class="project-header">
+                    <i class="fas fa-book project-icon"></i>
+                    <div>
+                        <h3>Dokumentator - Bookeping</h3>
+                        <p class="date">Project Based Learning | Sep 2023 – Des 2023</p>
+                    </div>
+                </div>
+                <ul class="responsibilities">
+                    <li>Mendokumentasikan seluruh proses pengembangan aplikasi</li>
+                    <li>Menyusun dokumentasi teknis dan non-teknis</li>
+                    <li>Mencatat perubahan dan perkembangan sistem</li>
+                    <li>Mengelola dokumentasi sebagai referensi tim</li>
+                </ul>
+                <div class="tech-stack">
+                    <span class="tech-tag">Dokumentasi Teknis</span>
+                    <span class="tech-tag">Manajemen Dokumen</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sertifikasi -->
+        <section>
+            <h2>Sertifikasi & Pelatihan</h2>
+            <div class="certificate-grid">
+                <!-- LKMM Pra-TD -->
+                <div class="certificate-card">
+                    <div class="certificate-header">
+                        <i class="fas fa-certificate certificate-icon"></i>
+                        <div>
+                            <h3>LKMM Pra-TD</h3>
+                            <p class="certificate-issuer">HMJ-TI Politeknik Negeri Jember</p>
+                        </div>
+                    </div>
+                    <p class="certificate-date">2023</p>
+                    <div class="certificate-description">
+                        <p>Pelatihan dasar kepemimpinan mahasiswa tingkat program studi</p>
+                    </div>
+                    <a href="pdf/Meta Nur Arfiya.pdf" class="certificate-link" target="_blank">
+                        <i class="fas fa-eye"></i> Lihat Sertifikat
+                    </a>
+                </div>
+                
+                <!-- Exploring Flutter Bootcamp -->
+                <div class="certificate-card">
+                    <div class="certificate-header">
+                        <i class="fas fa-mobile-alt certificate-icon"></i>
+                        <div>
+                            <h3>Exploring Flutter Bootcamp</h3>
+                            <p class="certificate-issuer">Informatics Community</p>
+                        </div>
+                    </div>
+                    <p class="certificate-date">2024</p>
+                    <div class="certificate-description">
+                        <p>Pelatihan pengembangan aplikasi mobile menggunakan Flutter dan Dart</p>
+                    </div>
+                    <a href="pdf/sertifikat bootcamp.pdf" class="certificate-link" target="_blank">
+                        <i class="fas fa-eye"></i> Lihat Sertifikat
+                    </a>
+                </div>
+                
+                <!-- English Proficiency Test -->
+                <div class="certificate-card">
+                    <div class="certificate-header">
+                        <i class="fas fa-language certificate-icon"></i>
+                        <div>
+                            <h3>English Proficiency Test (EPT)</h3>
+                            <p class="certificate-issuer">UPA Bahasa Politeknik Negeri Jember</p>
+                        </div>
+                    </div>
+                    <p class="certificate-date">2024</p>
+                    <div class="certificate-description">
+                        <p>Uji kemahiran bahasa Inggris akademik</p>
+                    </div>
+                    <a href="pdf/ept-certificate.pdf" class="certificate-link" target="_blank">
+                        <i class="fas fa-clock"></i> Segera Tersedia
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Kepanitiaan -->
+        <section>
+            <h2>Pengalaman Kepanitiaan</h2>
+            
+            <div class="committee-item">
+                <div class="project-header">
+                    <i class="fas fa-bullhorn project-icon"></i>
+                    <div>
+                        <h3><span class="committee-position">Divisi Publikasi</span> | <span class="committee-event">Edufair Politeknik Negeri Jember Kampus 3 Nganjuk 2024</span></h3>
+                        <p class="date">Mar 2024 | <span class="committee-organization">Informatics Community Politeknik Negeri Jember</span></p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="committee-item">
+                <div class="project-header">
+                    <i class="fas fa-bullhorn project-icon"></i>
+                    <div>
+                        <h3><span class="committee-position">Divisi Publikasi</span> | <span class="committee-event">Buka Bersama TIF PSDKU Nganjuk</span></h3>
+                        <p class="date">Mar 2024 | <span class="committee-organization">Informatics Community Politeknik Negeri Jember</span></p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="committee-item">
+                <div class="project-header">
+                    <i class="fas fa-bullhorn project-icon"></i>
+                    <div>
+                        <h3><span class="committee-position">Divisi Publikasi</span> | <span class="committee-event">TIF Exhibition Semester Genap TIF PSDKU Nganjuk</span></h3>
+                        <p class="date">Ags 2024 | <span class="committee-organization">Informatics Community Politeknik Negeri Jember</span></p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="committee-item">
+                <div class="project-header">
+                    <i class="fas fa-bullhorn project-icon"></i>
+                    <div>
+                        <h3><span class="committee-position">Divisi Publikasi</span> | <span class="committee-event">Malam Keakraban 2024</span></h3>
+                        <p class="date">Okt 2024 | <span class="committee-organization">Informatics Community Politeknik Negeri Jember</span></p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="committee-item">
+                <div class="project-header">
+                    <i class="fas fa-bullhorn project-icon"></i>
+                    <div>
+                        <h3><span class="committee-position">Divisi Publikasi</span> | <span class="committee-event">Buka Bersama TIF PSDKU Nganjuk</span></h3>
+                        <p class="date">Mar 2025 | <span class="committee-organization">Informatics Community Politeknik Negeri Jember</span></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Organisasi -->
+        <section>
+            <h2>Pengalaman Organisasi</h2>
+            <div class="project-card">
+                <div class="project-header">
+                    <i class="fas fa-users project-icon"></i>
+                    <div>
+                        <h3>Divisi PDD - HIMA Prodi TIF</h3>
+                        <p class="date">2023 - Sekarang</p>
+                    </div>
+                </div>
+                <ul class="responsibilities">
+                    <li>Mengelola publikasi kegiatan organisasi</li>
+                    <li>Mendesain dekorasi untuk acara</li>
+                    <li>Mendokumentasikan kegiatan dalam bentuk foto, video, dan laporan</li>
+                    <li>Menyusun materi publikasi dan promosi organisasi</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Keterampilan -->
+        <section>
+            <h2>Keterampilan Teknis</h2>
+            <div class="tech-stack">
+                <span class="tech-tag">Java</span>
+                <span class="tech-tag">MySQL</span>
+                <span class="tech-tag">HTML/CSS</span>
+                <span class="tech-tag">PHP</span>
+                <span class="tech-tag">Testing</span>
+                <span class="tech-tag">Quality Assurance</span>
+                <span class="tech-tag">Manajemen Proyek</span>
+                <span class="tech-tag">Microsoft Office</span>
+                <span class="tech-tag">Figma</span>
+                <span class="tech-tag">Canva</span>
+            </div>
+        </section>
+
+        <!-- Portofolio -->
+        <section>
+            <h2>Portofolio</h2>
+            <div class="project-card">
+                <div class="project-header">
+                    <i class="fas fa-briefcase project-icon"></i>
+                    <div>
+                        <h3>Portofolio Online</h3>
+                        <p class="date">Kumpulan proyek dan karya terbaru</p>
+                    </div>
+                </div>
+                <p>Anda dapat melihat kumpulan proyek dan karya terbaru saya di portofolio online berikut:</p>
+                <div class="tech-stack" style="margin-top: 1.5rem;">
+                    <a href="https://sites.google.com/view/metaarfiya/beranda" 
+                       class="tech-tag" 
+                       target="_blank"
+                       style="text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem;">
+                        <i class="fas fa-external-link-alt"></i> Kunjungi Portofolio
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Kontak -->
+        <section>
+            <h2>Hubungi Saya</h2>
+            <div class="social-links">
+                <a href="https://linkedin.com/in/meta-arfiya-060146202" class="social-link" target="_blank">
+                    <i class="fab fa-linkedin"></i> LinkedIn
+                </a>
+                <a href="https://instagram.com/mtarfya_" class="social-link" target="_blank">
+                    <i class="fab fa-instagram"></i> Instagram
+                </a>
+                <a href="mailto:mettametta815@gmail.com" class="social-link">
+                    <i class="fas fa-envelope"></i> Email
+                </a>
+                <a href="https://github.com/MetaNurA" class="social-link" target="_blank">
+                    <i class="fab fa-github"></i> GitHub
+                </a>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
